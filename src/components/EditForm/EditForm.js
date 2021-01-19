@@ -6,7 +6,11 @@ const EditForm = ({ taskList, id }) => {
     let changeText = '';
     const handleSubmit = (e) => {
         e.preventDefault();
-        taskList.tasks[id].edit(changeText.value);
+        if(changeText.value){
+            taskList.tasks[id].edit(changeText.value);
+        }else{
+            alert('Olvidas algo importante... Tu TASK. No olvides escribirla')
+        }
         e.target.reset();
         changeText.focus();
     }
