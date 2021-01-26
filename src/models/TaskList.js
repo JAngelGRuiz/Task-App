@@ -11,6 +11,9 @@ const TaskList = types.model('TaskList', {
     },
     hideTasksDone(){
         self.hideDone = !self.hideDone
+    },
+    delete(id){
+        self.tasks.splice(id, 1);
     }
 }))
 

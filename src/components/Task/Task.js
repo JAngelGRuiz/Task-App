@@ -7,7 +7,9 @@ import {
     WrapperTask,
     Check, 
     TodoTask,
-    EditingPart
+    EditingPart,
+    DltButton,
+    DltSection
 } from './styles';
 
 const Task = ({ tasks, id, taskList }) => {
@@ -20,6 +22,7 @@ const Task = ({ tasks, id, taskList }) => {
                 <WrapperTask isEditing={isEditing} isDone={tasks.isDone}>
                     <Check type='checkbox' defaultChecked={tasks.isDone ? 'checked' : null} onClick={() => tasks.setIsDone()} />
                     <TodoTask onClick={() => setIsEditing(!isEditing)}> { tasks.todoTask } </TodoTask>
+                    <DltSection><DltButton onClick={() => taskList.delete(id)}>Eliminar</DltButton></DltSection>
                 </WrapperTask> 
                 <EditingPart isEditing={isEditing}>
                     <EditForm taskList={taskList} id={id} />

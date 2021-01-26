@@ -24,8 +24,11 @@ export const WrapperTask = styled.div`
     display: flex;
     align-items: center;
     list-style: none;
-    display: block;
-    text-decoration: ${(props) => props.isDone ? 'line-through' : 'none'} ;
+    display: flex;
+    
+    span {
+        text-decoration: ${(props) => props.isDone ? 'line-through' : 'none'} ;
+    }
 `;
 
 export const EditingPart = styled.div`
@@ -43,3 +46,30 @@ export const TodoTask = styled.span`
     font-size: 20px;
     padding: 0px 12px;
 `;
+
+export const DltButton = styled.button`
+    width: 70px;
+    height: 30px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    opacity: 0;
+    background-color: red;
+    cursor: pointer;
+`;
+
+export const DltSection = styled.div`
+    width: 120px;
+    height: 100%;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+
+    &:hover{
+        button{
+            opacity: 1;
+        }
+    }
+`;
+
