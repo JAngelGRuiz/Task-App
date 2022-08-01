@@ -1,14 +1,12 @@
 import { types } from 'mobx-state-tree';
 
 const Task = types.model('Task', {
-    todoTask: types.string,
-    isDone: false
+    name: types.string,
+    isDone: false,
+    id: types.string
 }).actions(self => ({
     setIsDone(){
         self.isDone = !self.isDone
-    },
-    edit(text){
-        self.todoTask = text
     }
 }))
 

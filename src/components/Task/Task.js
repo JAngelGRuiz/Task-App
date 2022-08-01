@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
-import EditForm from '../EditForm/EditForm';
 import {
     TaskContainer,
     List,
@@ -11,21 +10,39 @@ import {
     DltButton,
     DltSection
 } from './styles';
+import TaskForm from '../TaskForm/TaskForm';
+import SingleForm from '../SingleForm';
 
-const Task = ({ tasks, id, taskList }) => {
+const Task = ({ task, taskList }) => {
 
     const [isEditing, setIsEditing ] = useState(false);
+    const { isDone, setIsDone, name, id } = task
 
     return (
-        <TaskContainer isDone={tasks.isDone} hide={taskList.hideDone}>
+        <TaskContainer isDone={isDone} hide={taskList.hideDone}>
             <List isEditing={isEditing}>
-                <WrapperTask isEditing={isEditing} isDone={tasks.isDone}>
-                    <Check type='checkbox' defaultChecked={tasks.isDone ? 'checked' : null} onClick={() => tasks.setIsDone()} />
-                    <TodoTask onClick={() => setIsEditing(!isEditing)}> { tasks.todoTask } </TodoTask>
-                    <DltSection><DltButton onClick={() => taskList.delete(id)}>Eliminar</DltButton></DltSection>
+                <WrapperTask isEditing={isEditing} isDone={isDone}>
+                    <Check
+                        type='checkbox'
+                        defaultChecked={isDone ? 'checked' : null}
+                        onClick={() => setIsDone()}
+                    />
+                    <TodoTask onClick={() => setIsEditing(!isEditing)}> { name } </TodoTask>
+                    <DltSection>
+                      <DltButton onClick={() => taskList.delete(id)}>Delete</DltButton>
+                    </DltSection>
                 </WrapperTask> 
                 <EditingPart isEditing={isEditing}>
-                    <EditForm taskList={taskList} id={id} />
+                    <TaskForm
+                        taskList={taskList}
+                        id={id}
+                        isEditing={isEditing}
+                        name={name}
+                        render={
+                            (props) => 
+                                <SingleForm {...props} />
+                        }
+                     />
                 </EditingPart> 
             </List>
         </TaskContainer>    

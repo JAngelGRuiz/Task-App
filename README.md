@@ -1,17 +1,17 @@
-# Proyecto test para Real Trends.
+# TODOS App using mobx-state-tree
 
-Este proyecto fue hecho por José Angel Garía Ruiz.
-Se utilizó las siguientes tecnologias:
--Create React App.
--React Hook
--Mobx State Tree.
--LocalStorage
--Emotion.
+This is an small app that allows users to create a TODOS list.
+All the app runs locally using the localStorage as a data base to handle the TODOS
+Users can create, read, update and delete the todos as they want.
 
-## Funcionalidad. 
+This is a project that is mainly focused on the logic of an small todo app and its implementatio with mobx-state-tree.
 
-La App tiene incorporadas todas las características solicitadas. El diseño de la web fue totalmente improvisado, simplemente tratando de que 
-tuviese buena presentación. Enfoncadose principalmente en la funcionalidad. 
+This project was created wtih create-react-app
+
+## Tech Stack. 
+
+- Mobx-state-tree
+- Emotion (CSS_IN_JS)
 
 ### Available Scripts
 
@@ -24,11 +24,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 

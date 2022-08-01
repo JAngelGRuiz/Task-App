@@ -1,33 +1,41 @@
-import React from 'react';
-import {
-    WrapperForm,
-    Button,
-    Input
-} from './styles';
+import React, { useEffect, useState } from 'react';
 
-const TaskForm = (props) => {
+const TaskForm = ({ taskList, isEditing, id, name, render }) => {
+    const[taskValue, setTaskValue] = useState(isEditing ? name : '')
 
-    const { taskList } = props;
+    useEffect(() => {
+      if(isEditing){
+        setTaskValue(name)
+      }
+    }, [])
 
-    let nameInput = '';
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if(nameInput.value){
-            taskList.add({
-                todoTask: nameInput.value,
-            })
-        }else{
-            alert('Olvidas algo importante... Tu TASK. No olvides escribirla')
-        }
-        e.target.reset();
-        nameInput.focus();
+      e.preventDefault();
+
+      if(!taskValue){
+        alert('Do not forget to write your NOTE')
+        return
+      }
+
+      if(isEditing) {
+        taskList.edit(taskValue, id);
+        return
+      }
+
+      taskList.add({
+        name: taskValue,
+        id: Math.random().toString(36).substr(2, 18)
+      })
+
+      setTaskValue('')
+    }
+
+    const handleChange = (e) => {
+      setTaskValue(e.target.value)
     }
 
     return (
-        <WrapperForm onSubmit={handleSubmit}>
-            <Input ref={input => (nameInput = input)} placeholder='Agrega tus notas' type='text' />
-            <Button type='submit'>Agregar</Button>
-        </WrapperForm>
+      render({handleSubmit, handleChange, taskValue, isEditing})
     );
 };
 

@@ -7,7 +7,7 @@ import {
 const Header = () => {
     return (
         <HeaderWrapper>
-            <Title>Lista de Tareas</Title>
+            <Title>To Do App</Title>
         </HeaderWrapper>
     );
 };
