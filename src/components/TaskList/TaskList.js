@@ -4,24 +4,27 @@ import Task from '../Task/Task';
 import { observer } from 'mobx-react';
 
 const TaskList = ({ taskList }) => {
-    if(taskList.tasks.length === 0){
+    if(!taskList.tasks.length){
         return (
             <WrapperList emptyList={true}>
-                <EmptyMessage>Empieza a escribir tus notas</EmptyMessage>
+                <EmptyMessage>Write your first note</EmptyMessage>
             </WrapperList>
         )
-    }else{
-        return (
-            <WrapperList emptyList={false}>
-                { taskList.tasks.map((tasks, i) => {
-                    return(
-                        <Task tasks={tasks} taskList={taskList} id={i} key={i} />
-                    )
-                })
-                }
-            </WrapperList>
-        );
     }
+
+      return (
+        <WrapperList emptyList={false}>
+          { 
+            taskList.tasks.map((task) =>  
+              <Task
+                task={task} 
+                taskList={taskList}
+                key={task.id} 
+              />
+            )
+          }
+        </WrapperList>
+      );
 };
 
 export default observer(TaskList);

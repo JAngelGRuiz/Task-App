@@ -54,7 +54,6 @@ export const DltButton = styled.button`
     color: white;
     font-weight: bold;
     border-radius: 12px;
-    opacity: 0;
     background-color: red;
     cursor: pointer;
 `;
@@ -65,11 +64,5 @@ export const DltSection = styled.div`
     margin-left: auto;
     display: flex;
     justify-content: center;
-
-    &:hover{
-        button{
-            opacity: 1;
-        }
-    }
 `;
 

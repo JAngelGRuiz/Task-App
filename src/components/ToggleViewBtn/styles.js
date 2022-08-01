@@ -10,7 +10,7 @@ export const ButtonContainer = styled.div`
 
 export const Button = styled.button`
     height: 45px;
-    width: 120px;
+    width: 150px;
     border-radius: 20px;
     border: none;
     background-color: ${(props) => props.isHidden ? 'grey' : 'green'};

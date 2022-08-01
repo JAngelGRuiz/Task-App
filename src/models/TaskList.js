@@ -13,7 +13,12 @@ const TaskList = types.model('TaskList', {
         self.hideDone = !self.hideDone
     },
     delete(id){
-        self.tasks.splice(id, 1);
+        const newTasks = self.tasks.filter(task => task.id !== id)
+        self.tasks = newTasks
+    },
+    edit(value, id){
+        const task = self.tasks.find(task => task.id === id)
+        task.name = value
     }
 }))
 
